@@ -15,7 +15,7 @@
 */
 
 const {Client, Events, GatewayIntentBits} = require("discord.js") // Mandatory discord.js shit
-const {Token} = require("./config.json")
+const {Token} = require("./token.json")
 
 const client = new Client({intents: [GatewayIntentBits.GuildMessages]})
 
