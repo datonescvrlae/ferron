@@ -29,4 +29,4 @@ client.once(Events.ClientReady, readyClient => {
 	console.log(`Client ready! Logged in as ${readyClient.user.tag}.`)
 })
 
-client.login(Token) // Prompt the bot to log into the account associated with the $Token
+client.login(Token) // Make the bot log into the account associated with the Token var
