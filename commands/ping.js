@@ -14,7 +14,7 @@
 
 */
 
-const {SlashCommandBuilder} = require("discord.js") // Mandatory discord.js shit
+const {SlashCommandBuilder} = require("discord.js") // Class used to create commands
 
 module.exports = {
        data: new SlashCommandBuilder()

@@ -19,6 +19,10 @@ const {Token} = require("./token.json")
 
 const client = new Client({intents: [GatewayIntentBits.GuildMessages]})
 
+client.once(Events.InteractionCreate, async interaction => {
+	
+})
+
 client.once(Events.ClientReady, readyClient => {
 	// Set the custom status of the bot to whatever we want here it just looks cool that's about it lol
 	readyClient.user.setPresence({
