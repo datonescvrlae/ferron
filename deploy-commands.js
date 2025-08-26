@@ -44,6 +44,8 @@ async function onStart() {
        } catch(error) {
               console.error(error) // Make sure to log any errors that occur during this process
        }
+
+       console.log("Successfully refreshed the bot's slash commands!")
 }
 
 onStart() // Run the start function
