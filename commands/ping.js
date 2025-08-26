@@ -21,7 +21,7 @@ module.exports = {
               .setName("ping")
               .setDescription('Replies with "Pong" and the latency.'),
 
-       // The code that will be executed once the command is called
+       // The code that will be executed once the command is called by a user
        async execute(interaction) {
               await interaction.reply("Pong!")
        }
