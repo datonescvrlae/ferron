@@ -30,7 +30,7 @@ function onStart() {
 	
 	// Iterate all files in the commands directory and cache them in the client
 	// That way we can just access a key in a cache instead of parsing the file system every time
-	for (const file in directoryToLoad) {
+	for (const file of directoryToLoad) {
 		const filePath = path.join(commandsPath, file)
 		const command = require(filePath)
 
