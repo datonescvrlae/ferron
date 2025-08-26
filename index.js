@@ -14,14 +14,15 @@
 
 */
 
-const {Client, Collection, Events, GatewayIntentBits} = require("discord.js") // Mandatory discord.js shit
+const {Client, Collection, Events, GatewayIntentBits, REST, Routes} = require("discord.js") // Mandatory discord.js shit
 const {Token} = require("./token.json")
-const {StatusType} = require("./config.json") // Global configuration variables
+const {StatusType, AppId} = require("./config.json") // Global configuration variables
 
 const fs = require("node:fs")
 const path = require("node:path") // Module for joining directory paths that I didn't know existed lol
 
 const client = new Client({intents: [GatewayIntentBits.GuildMessages]})
+const rest = new REST().setToken(Token)
 
 function onStart() {
 	client.commands = new Collection() // We'll store command data in here
@@ -38,7 +39,15 @@ function onStart() {
 		client.commands.set(command.data.name, command) // Cache the command
 	}
 
-	client.login(Token) // Make the bot log into the account associated with the Token var
+	// Start the slash command registration keeping all of them global by default idc that much
+	try {
+		rest.put(Routes.applicationCommands(AppId), {body: client.commands})
+	} catch (error) {
+		console.error(error) // Log any errors that occur during this process
+	}
+
+	 // Make the bot log into the account associated with the Token var
+	client.login(Token)
 }
 
 client.on(Events.InteractionCreate, async interaction => {
