@@ -22,7 +22,6 @@ module.exports = {
 		.setDescription('Replies with "Pong!".'),
 
 	// This is the function that will be called when the function is ran
-	// Please do not process permissions here it's done somewhere else in the code
 	async execute(interaction) {
 		await interaction.reply("Pong!") // Do literally the only thing this command is supposed to do
 	}
