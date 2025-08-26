@@ -29,6 +29,8 @@ function onStart() {
 
 	const commandsPath = path.join(__dirname, "commands") // __dirname is basically the parent directory of this file
 	const directoryToLoad = fs.readdirSync(commandsPath)
+
+	const jsonCommands = [] // Array used to store jsonified command data for registration
 	
 	// Iterate all files in the commands directory and cache them in the client
 	// That way we can just access a key in a cache instead of parsing the file system every time
@@ -37,11 +39,14 @@ function onStart() {
 		const command = require(filePath)
 
 		client.commands.set(command.data.name, command) // Cache the command
+
+		// Also push the data but in a json format into our special array for registration
+		jsonCommands.push(command.data.toJSON())
 	}
 
 	// Start the slash command registration keeping all of them global by default idc that much
 	try {
-		rest.put(Routes.applicationCommands(AppId), {body: client.commands})
+		rest.put(Routes.applicationCommands(AppId), {body: jsonCommands})
 	} catch (error) {
 		console.error(error) // Log any errors that occur during this process
 	}
