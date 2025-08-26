@@ -19,6 +19,12 @@ const {Token} = require("./token.json")
 
 const client = new Client({intents: [GatewayIntentBits.GuildMessages]})
 
+function onStart() {
+	
+
+	client.login(Token) // Make the bot log into the account associated with the Token var
+}
+
 client.once(Events.InteractionCreate, async interaction => {
 	
 })
@@ -33,4 +39,4 @@ client.once(Events.ClientReady, readyClient => {
 	console.log(`Client ready! Logged in as ${readyClient.user.tag}.`)
 })
 
-client.login(Token) // Make the bot log into the account associated with the Token var
+onStart() // Run the start function
