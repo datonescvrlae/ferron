@@ -16,6 +16,7 @@
 
 const {Client, Collection, Events, GatewayIntentBits} = require("discord.js") // Mandatory discord.js shit
 const {Token} = require("./token.json")
+const {StatusType} = require("./config.json") // Global configuration variables
 
 const fs = require("node:fs")
 const path = require("node:path") // Module for joining directory paths that I didn't know existed lol
@@ -57,7 +58,7 @@ client.on(Events.InteractionCreate, async interaction => {
 client.once(Events.ClientReady, readyClient => {
 	// Set the custom status of the bot to whatever we want here it just looks cool that's about it lol
 	readyClient.user.setPresence({
-       	status: "dnd"
+       	status: StatusType
 	})
 
 	// Log the client being ready so we know
