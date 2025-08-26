@@ -41,7 +41,17 @@ function onStart() {
 }
 
 client.once(Events.InteractionCreate, async interaction => {
-	
+	if (!interaction.isChatInputCommand()) return null // Not every interaction is a command so check for that
+
+	const command = client.commands.get(interaction.commandName)
+
+	// Always execute the command inside of a "try catch" block in case something goes wrong
+	// The last thing we wanna do is crash the bot from a command error
+	try {
+		await command.execute(interaction)
+	} catch (error) {
+		console.error(error) // Output the error if the command fails to execute
+	}
 })
 
 client.once(Events.ClientReady, readyClient => {
