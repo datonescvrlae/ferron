@@ -27,9 +27,9 @@ async function onStart() {
        const commandsPath = path.join(__dirname, "commands") // __dirname is basically the parent directory of this file
        const directoryToLoad = fs.readdirSync(commandsPath)
 
-       const jsonCommands = [] // Array used to store jsonified command data for registration
+       const jsonCommands = [] // Array used to store jsonified commands for registration
        
-       // Iterate all files in the commands directory and store them
+       // Iterate all files in the commands directory and store their command data
        for (const file of directoryToLoad) {
               const filePath = path.join(commandsPath, file)
               const command = require(filePath)
