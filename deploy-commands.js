@@ -29,8 +29,7 @@ async function onStart() {
 
        const jsonCommands = [] // Array used to store jsonified command data for registration
        
-       // Iterate all files in the commands directory and cache them in the client
-       // That way we can just access a key in a cache instead of parsing the file system every time
+       // Iterate all files in the commands directory and store them
        for (const file of directoryToLoad) {
               const filePath = path.join(commandsPath, file)
               const command = require(filePath)
@@ -38,6 +37,8 @@ async function onStart() {
               jsonCommands.push(command.data.toJSON()) // Store jsonified command data
        }
 
+       // Using the routes module register all of our slash commands to the specified guild
+       // It's faster than doing it globally and this bot is private so *shrug*
        try {
               await rest.put(Routes.applicationGuildCommands(AppId, GuildId))
        } catch(error) {
