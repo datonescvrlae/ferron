@@ -40,7 +40,7 @@ function onStart() {
 	client.login(Token) // Make the bot log into the account associated with the Token var
 }
 
-client.once(Events.InteractionCreate, async interaction => {
+client.on(Events.InteractionCreate, async interaction => {
 	if (!interaction.isChatInputCommand()) return null // Not every interaction is a command so check for that
 
 	const command = client.commands.get(interaction.commandName)
