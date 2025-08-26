@@ -14,13 +14,28 @@
 
 */
 
-const {Client, Events, GatewayIntentBits} = require("discord.js") // Mandatory discord.js shit
+const {Client, Collection, Events, GatewayIntentBits} = require("discord.js") // Mandatory discord.js shit
 const {Token} = require("./token.json")
+
+const fs = require("node:fs")
+const path = require("node:path") // Module for joining directory paths that I didn't know existed lol
 
 const client = new Client({intents: [GatewayIntentBits.GuildMessages]})
 
 function onStart() {
+	client.commands = new Collection() // We'll store command data in here
+
+	const commandsPath = path.join(__dirname, "commands")
+	const directoryToLoad = fs.readdirSync(commandsPath)
 	
+	// Iterate all files in the commands directory and cache them in the client
+	// That way we can just access a key in a cache instead of parsing the file system every time
+	for (const file in directoryToLoad) {
+		const filePath = path.join(commandsPath, file)
+		const command = require(filePath)
+
+		client.commands.set(command.data.name, command) // Cache the command
+	}
 
 	client.login(Token) // Make the bot log into the account associated with the Token var
 }
