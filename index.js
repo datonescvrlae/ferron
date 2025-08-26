@@ -25,7 +25,7 @@ const client = new Client({intents: [GatewayIntentBits.GuildMessages]})
 function onStart() {
 	client.commands = new Collection() // We'll store command data in here
 
-	const commandsPath = path.join(__dirname, "commands")
+	const commandsPath = path.join(__dirname, "commands") // __dirname is basically the parent directory of this file
 	const directoryToLoad = fs.readdirSync(commandsPath)
 	
 	// Iterate all files in the commands directory and cache them in the client
