@@ -63,7 +63,7 @@ client.on(Events.InteractionCreate, async interaction => {
 	// If the command annoys the bot process the new anger level lol this is so fucking stupid
 	if (command.annoyance) {
 		const annoyance = getRandomInteger(command.annoyance[0], command.annoyance[1])
-		angerLevel += annoyance // Piss off the bot rightttt here
+		angerLevel += annoyance
 	}
 })
 
