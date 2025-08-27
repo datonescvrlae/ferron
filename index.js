@@ -23,6 +23,12 @@ const path = require("node:path") // Module for joining directory paths that I d
 
 const client = new Client({intents: [GatewayIntentBits.GuildMessages]})
 
+let angerLevel = 0 // How pissed off the bot is from 0 to 100
+
+function getRandomInteger(minNum, maxNum) {
+	return Math.floor(Math.random() * (maxNum - minNum) + minNum) // Why does JS not have a thing for this
+}
+
 function onStart() {
 	client.commands = new Collection() // We'll store command data in here
 
@@ -52,6 +58,12 @@ client.on(Events.InteractionCreate, async interaction => {
 		await command.execute(interaction)
 	} catch (error) {
 		console.error(error) // Output the error if the command fails to execute
+	}
+
+	// If the command annoys the bot process the new anger level lol this is so fucking stupid
+	if (command.annoyance) {
+		const annoyance = getRandomInteger(command.annoyance[0], command.annoyance[1])
+		angerLevel += annoyance // Piss off the bot rightttt here
 	}
 })
 

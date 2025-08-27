@@ -24,5 +24,7 @@ module.exports = {
 	// This is the function that will be called when the function is ran
 	async execute(interaction) {
 		await interaction.reply("Pong!") // Do literally the only thing this command is supposed to do
-	}
+	},
+
+	annoyance: [5, 20] // Range of much this command pisses the bot off
 }
