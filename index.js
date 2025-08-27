@@ -21,7 +21,7 @@ const {StatusType} = require("./config.json") // Global configuration variables
 const fs = require("node:fs")
 const path = require("node:path") // Module for joining directory paths that I didn't know existed lol
 
-const client = new Client({intents: [GatewayIntentBits.GuildMessages]})
+const client = new Client({intents: [GatewayIntentBits.MessageContent, GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages]})
 
 function onStart() {
 	client.commands = new Collection() // We'll store command data in here
@@ -53,6 +53,10 @@ client.on(Events.InteractionCreate, async interaction => {
 	} catch (error) {
 		console.error(error) // Output the error if the command fails to execute
 	}
+})
+
+client.on(Events.MessageCreate, async message => {
+	
 })
 
 client.once(Events.ClientReady, readyClient => {
