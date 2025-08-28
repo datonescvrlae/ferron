@@ -1,3 +1,3 @@
 <h1 align="center">
-  Ferron Discord Bot
+  Ferron
 </h1>
