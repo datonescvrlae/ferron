@@ -16,7 +16,7 @@
 
 const {REST, Routes} = require("discord.js") // Classes used for slash command registration
 const {Token} = require("./token.json")
-const {AppId, GuildId} = require("./config.json") // Global configuration variables
+const {AppId, GuildIds} = require("./config.json") // Global configuration variables
 
 const fs = require("node:fs")
 const path = require("node:path") // Module for joining directory paths that I didn't know existed lol
@@ -37,12 +37,14 @@ async function onStart() {
               jsonCommands.push(command.data.toJSON()) // Store jsonified command data
        }
 
-       // Using the routes module register all of our slash commands to the specified guild
+       for (guildId of GuildIds) {
+       // Using the routes module register all of our slash commands to all registered guilds
        // It's faster than doing it globally and this bot is private so *shrug*
-       try {
-              await rest.put(Routes.applicationGuildCommands(AppId, GuildId), {body: jsonCommands})
-       } catch(error) {
-              console.error(error) // Make sure to log any errors that occur during this process
+              try {
+                     await rest.put(Routes.applicationGuildCommands(AppId, guildId), {body: jsonCommands})
+              } catch(error) {
+                     console.error(error) // Make sure to log any errors that occur during this process
+              }
        }
 
        console.log("Successfully refreshed the bot's slash commands!")
