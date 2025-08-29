@@ -39,13 +39,10 @@ module.exports = {
 
 	// This is the function that will be called when the command is ran
 	async execute(interaction) {
-		const user = interaction.options.getUser("user") // We also need the user to send a DM
 		const guildMember = interaction.options.getMember("user")
-
 		const reason = interaction.options.getString("reason") ?? "No reason given."
 
-		//guildMember.kick(reason) // Kick the user from the guild
-		user.send("Test")
+		guildMember.kick(reason) // And finally kick the user from the guild
 	},
 
 	// What permissions the user must have to be able to use this command
