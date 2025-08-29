@@ -21,7 +21,7 @@ module.exports = {
 		.setName("kick")
 		.setDescription("No description yet.")
 
-		.addUserOption(option => option
+		.addUserOption(option => option // This option specifies which user to kick from the server
 			.setName("user")
 			.setDescription("The user to kick from the server.")
 
