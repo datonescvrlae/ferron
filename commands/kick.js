@@ -14,15 +14,25 @@
 
 */
 
-const {SlashCommandBuilder} = require("discord.js") // Class used to create slash commands
+const {SlashCommandBuilder, PermissionsBitField} = require("discord.js") // Just some discord.js shit
 
 module.exports = {
 	data: new SlashCommandBuilder() // Set data related to how the command will register
-		.setName("ping")
-		.setDescription("No description yet."),
+		.setName("kick")
+		.setDescription("No description yet.")
+
+		.addUserOption(option => option
+			.setName("user")
+			.setDescription("The user to kick from the server.")
+
+			.setRequired(true)
+		),
 
 	// This is the function that will be called when the command is ran
 	async execute(interaction) {
-		await interaction.reply("Pong!") // Do literally the only thing this command is supposed to do
-	}
+		
+	},
+
+	// What permissions the user must have to be able to use this command
+	permissions: [PermissionsBitField.Flags.KickMembers]
 }
