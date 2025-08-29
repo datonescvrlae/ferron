@@ -21,18 +21,34 @@ module.exports = {
 		.setName("kick")
 		.setDescription("No description yet.")
 
-		.addUserOption(option => option // This option specifies which user to kick from the server
-			.setName("user")
-			.setDescription("The user to kick from the server.")
+	// Additional parameters for the command such as a user or channel
 
-			.setRequired(true)
-		),
+	// In this case we first specify which user to kick which is a required parameter
+	// And there's also an optional reason that can be given
+	.addUserOption(option => option
+		.setName("user")
+		.setDescription("The user to kick from the server.")
+
+		.setRequired(true)
+	)
+
+	.addStringOption(option => option // This gets defaulted to "No reason given." if left empty
+		.setName("reason")
+		.setDescription("Reason for kicking the user.")
+	),
 
 	// This is the function that will be called when the command is ran
 	async execute(interaction) {
-		
+		const user = interaction.options.getUser("user") // We also need the user to send a DM
+		const guildMember = interaction.options.getMember("user")
+
+		const reason = interaction.options.getString("reason") ?? "No reason given."
+
+		//guildMember.kick(reason) // Kick the user from the guild
+		user.send("Test")
 	},
 
 	// What permissions the user must have to be able to use this command
+	// You can also specify which roles can use this command by modifying the config
 	permissions: [PermissionsBitField.Flags.KickMembers]
 }
