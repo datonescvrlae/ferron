@@ -10,7 +10,7 @@
 	▒██████▒▒▒ ▓███▀ ░ ▒▀█░  ░██▓ ▒██▒░██████▒▓█   ▓██▒░▒████▒
 	
 	This file is part of the Ferron Discord bot owned and maintained by Scvrlae (@datonescvrlae).
-	It is private and not available for use under any circumstances!
+	It is a public resource that can be used for learning!
 
 */
 
