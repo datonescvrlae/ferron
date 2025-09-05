@@ -2,5 +2,8 @@
        "GuildIds": ["1372681424754180116", "1332385813199061074", "1242536817018802307"],
        "AppId": "1372679511639855214",
 
-       "StatusType": "dnd"
+       "Status": "dnd",
+
+       "ActiveType": "Watching",
+       "Activity": "over Scvrlae's Discord servers"
 }
