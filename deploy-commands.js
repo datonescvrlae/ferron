@@ -50,7 +50,7 @@ async function onStart() {
               if (process.argv[2] != "--release") break
        }
 
-       console.log("Successfully deplyoed the bot's slash commands!")
+       console.log("Successfully deployed the bot's slash commands!")
 }
 
 onStart() // Run the start function
