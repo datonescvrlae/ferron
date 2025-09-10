@@ -45,9 +45,12 @@ async function onStart() {
               } catch(error) {
                      console.error(error) // Make sure to log any errors that occur during this process
               }
+
+       // If no release flag is specified only deploy the commands to the test server
+              if (process.argv[2] != "--release") break
        }
 
-       console.log("Successfully refreshed the bot's slash commands!")
+       console.log("Successfully deplyoed the bot's slash commands!")
 }
 
 onStart() // Run the start function
