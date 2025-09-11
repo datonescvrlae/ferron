@@ -43,7 +43,6 @@ function onStart() {
 
 client.on(Events.InteractionCreate, async interaction => {
 	if (!interaction.isChatInputCommand()) return // Not every interaction is a command so check for that
-	if (interaction.member.user.id != "1092412412541550662") return // Temporary safety feature
 
 	const command = client.commands.get(interaction.commandName)
 
