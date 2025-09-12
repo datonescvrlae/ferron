@@ -1,2 +1,2 @@
 # File containing the bot token
-/src/json/token.json
+src/json/secret/*
