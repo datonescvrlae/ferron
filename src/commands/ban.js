@@ -19,6 +19,7 @@ const {SlashCommandBuilder, PermissionsBitField} = require("discord.js") // Just
 async function execute(interaction) {
 	const guildMember = interaction.options.getMember("user")
 
+	// Optional parameters that change how the function will complete the executed command
 	const reason = interaction.options.getString("reason") ?? "No reason given."
 	const duration = interaction.options.getInteger("duration")
 
