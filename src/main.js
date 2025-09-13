@@ -17,7 +17,7 @@
 const {Client, Collection, Events, GatewayIntentBits, ActivityType} = require("discord.js") // Mandatory discord.js shit
 
 const {Token} = require("./json/secret/token.json")
-const {Status, ActiveType, Activity} = require("./json/secret/config.json") // Global configuration variables
+const {Status, ActiveType, Activity} = require("./json/config.json") // Global configuration variables
 
 const fs = require("node:fs")
 const path = require("node:path") // Module for joining directory paths that I didn't know existed lol
