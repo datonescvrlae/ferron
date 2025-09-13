@@ -1,2 +1,2 @@
-# File containing the bot token
+# Ignore all secret json files containing sensitive data
 src/json/secret/*
