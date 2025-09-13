@@ -55,5 +55,5 @@ module.exports = {
 
 	// What permissions the user must have to be able to use this command
 	// You can also specify which roles can use this command by modifying the config
-	permissions: [PermissionsBitField.Flags.KickMembers]
+	permissions: [PermissionsBitField.Flags.BanMembers]
 }
