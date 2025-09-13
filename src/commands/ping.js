@@ -16,13 +16,15 @@
 
 const {SlashCommandBuilder} = require("discord.js") // Class used to create slash commands
 
+async function execute(interaction) {
+	await interaction.reply("Pong!") // Do literally the only thing this command is supposed to do
+}
+
 module.exports = {
 	data: new SlashCommandBuilder() // Set data related to how the command will register
 		.setName("ping")
 		.setDescription('Replies with "Pong!". Used to check bot responsiveness.'),
 
 	// This is the function that will be called when the command is ran
-	async execute(interaction) {
-		await interaction.reply("Pong!") // Do literally the only thing this command is supposed to do
-	}
+	execute: execute
 }

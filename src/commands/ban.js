@@ -16,6 +16,15 @@
 
 const {SlashCommandBuilder, PermissionsBitField} = require("discord.js") // Just some discord.js shit
 
+async function execute(interaction) {
+	const guildMember = interaction.options.getMember("user")
+
+	const reason = interaction.options.getString("reason") ?? "No reason given."
+	const duration = interaction.options.getInteger("duration")
+
+	guildMember.ban({reason: reason}) // Ban the member from the guild
+}
+
 module.exports = {
 	data: new SlashCommandBuilder() // Set data related to how the command will register
 		.setName("ban")
@@ -44,14 +53,7 @@ module.exports = {
 	),
 
 	// This is the function that will be called when the command is ran
-	async execute(interaction) {
-		const guildMember = interaction.options.getMember("user")
-
-		const duration = interaction.options.getInteger("duration")
-		const reason = interaction.options.getString("reason") ?? "No reason given."
-
-		guildMember.ban({reason: reason}) // Ban the member from the guild
-	},
+	execute: execute,
 
 	// What permissions the user must have to be able to use this command
 	// You can also specify which roles can use this command by modifying the config
