@@ -19,7 +19,7 @@ const {SlashCommandBuilder, PermissionsBitField} = require("discord.js") // Just
 module.exports = {
 	data: new SlashCommandBuilder() // Set data related to how the command will register
 		.setName("kick")
-		.setDescription("No description yet.")
+		.setDescription("Kicks the specified user from the server.")
 
 	// Additional parameters for the command such as a user or channel
 
